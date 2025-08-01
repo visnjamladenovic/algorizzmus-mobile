@@ -1,4 +1,5 @@
-name: Xcode - Build and Analyze
+name: Xcode - Build iOS (KMM)
+
 on:
   push:
     branches: [ "main" ]
@@ -7,27 +8,27 @@ on:
 
 jobs:
   build:
-    name: Build and analyse default scheme using xcodebuild command
+    name: Build iosApp target
     runs-on: macos-15
 
     steps:
+      # Step 1: Checkout code
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set Default Scheme
-        run: |
-          cd iosApp
-          scheme_list=$(xcodebuild -list -json | tr -d "\n")
-          default=$(echo $scheme_list | ruby -e "require 'json'; puts JSON.parse(STDIN.gets)['project']['targets'][0]")
-          echo $default | cat >default
-          echo Using default scheme: $default
+      # Step 2: Select correct Xcode (optional – uncomment if using Xcode 16)
+      # - name: Select Xcode 16
+      #   run: sudo xcode-select -s /Applications/Xcode_16.app
 
-      - name: Build
-        env:
-          scheme: ${{ 'default' }}
+      # Step 3: Build the iOS app
+      - name: Build iosApp
         run: |
           cd iosApp
-          if [ $scheme = default ]; then scheme=$(cat default); fi
-          if [ "`ls -A | grep -i \\.xcworkspace\$`" ]; then filetype_parameter="workspace" && file_to_build="`ls -A | grep -i \\.xcworkspace\$`"; else filetype_parameter="project" && file_to_build="`ls -A | grep -i \\.xcodeproj\$`"; fi
-          file_to_build=`echo $file_to_build | awk '{$1=$1;print}'`
-          xcodebuild clean build analyze -scheme "$scheme" -"$filetype_parameter" "$file_to_build" | xcpretty && exit ${PIPESTATUS[0]}
+          # List available simulators (debugging step, can remove later)
+          xcrun simctl list devices
+          # Run build for a specific simulator
+          xcodebuild clean build \
+            -scheme iosApp \
+            -project iosApp.xcodeproj \
+            -destination 'platform=iOS Simulator,name=iPhone 16,OS=18.2' \
+            | xcpretty
