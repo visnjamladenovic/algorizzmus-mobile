@@ -1,0 +1,7 @@
+TEAM_ID=
+
+PRODUCT_NAME=algorizzmus_mobile
+PRODUCT_BUNDLE_IDENTIFIER=com.snjavi.algorizzmus_mobile.algorizzmus_mobile$(TEAM_ID)
+
+CURRENT_PROJECT_VERSION=1
+MARKETING_VERSION=1.0
