@@ -6,8 +6,30 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		FD21B37E2E3E3950009C212A /* Shared.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD21B37D2E3E3950009C212A /* Shared.framework */; };
+		FD21B37F2E3E3950009C212A /* Shared.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FD21B37D2E3E3950009C212A /* Shared.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FD21B3912E3E3B60009C212A /* Shared.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD21B38F2E3E3B60009C212A /* Shared.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		FD21B3802E3E3950009C212A /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				FD21B37F2E3E3950009C212A /* Shared.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		B9DA97B12DC1472C00A4DA20 /* algorizzmus_mobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = algorizzmus_mobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FD21B37D2E3E3950009C212A /* Shared.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Shared.framework; path = ../shared/build/bin/iosSimulatorArm64/debugFramework/Shared.framework; sourceTree = "<group>"; };
+		FD21B38F2E3E3B60009C212A /* Shared.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Shared.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -41,6 +63,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD21B37E2E3E3950009C212A /* Shared.framework in Frameworks */,
+				FD21B3912E3E3B60009C212A /* Shared.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -50,8 +74,10 @@
 		B9DA97A82DC1472C00A4DA20 = {
 			isa = PBXGroup;
 			children = (
+				FD21B3902E3E3B60009C212A /* debugFramework */,
 				B9DA98002DC14AA900A4DA20 /* Configuration */,
 				B9DA97B32DC1472C00A4DA20 /* iosApp */,
+				FD21B37C2E3E394F009C212A /* Frameworks */,
 				B9DA97B22DC1472C00A4DA20 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -62,6 +88,22 @@
 				B9DA97B12DC1472C00A4DA20 /* algorizzmus_mobile.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		FD21B37C2E3E394F009C212A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FD21B37D2E3E3950009C212A /* Shared.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FD21B3902E3E3B60009C212A /* debugFramework */ = {
+			isa = PBXGroup;
+			children = (
+				FD21B38F2E3E3B60009C212A /* Shared.framework */,
+			);
+			path = debugFramework;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -75,6 +117,7 @@
 				B9DA97AD2DC1472C00A4DA20 /* Sources */,
 				B9DA97AE2DC1472C00A4DA20 /* Frameworks */,
 				B9DA97AF2DC1472C00A4DA20 /* Resources */,
+				FD21B3802E3E3950009C212A /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -301,9 +344,11 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../shared/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)",
+					"$(PROJECT_DIR)/debugFramework",
 				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iosApp/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Algorizzmus;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -335,9 +380,11 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../shared/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)",
+					"$(PROJECT_DIR)/debugFramework",
 				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iosApp/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Algorizzmus;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
