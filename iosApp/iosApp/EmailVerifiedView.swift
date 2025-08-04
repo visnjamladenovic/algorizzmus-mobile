@@ -24,7 +24,7 @@ struct EmailVerifiedView: View {
                     // Success Icon
                     ZStack {
                         Circle()
-                            .fill(Color.green.opacity(0.1))
+                            .fill(Color.accentColor.opacity(0.1))
                             .frame(width: 120, height: 120)
                         
                         Image(systemName: "checkmark.circle.fill")
